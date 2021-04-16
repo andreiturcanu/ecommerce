@@ -1,31 +1,24 @@
-import Navbar from "./components/Navbar";
 import { useEffect, useState } from "react";
-import ProductsContainer from "./components/ProductsContainer";
 import axios from "axios";
+import Header from "./layout/Header";
+import Body from "./layout/Body";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import AboutUs from "./pages/AboutUs";
+import Home from "./pages/Home";
+import Admin from "./pages/Admin";
 
 function App() {
-  const [products, setProducts] = useState(null);
-
-  useEffect(() => {
-    axios("/api/products")
-      .then((response) => {
-        const productsArr = response.data.products;
-        setProducts(productsArr);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, [products]);
-
   return (
-    <>
-      <header>
-        <Navbar />
-      </header>
-      <div className="container mt-3">
-        <ProductsContainer products={products} />
-      </div>
-    </>
+    <Router>
+      <Header />
+      <Body>
+        <Switch>
+          <Route path="/" exact component={Home} />
+          <Route path="/about" component={AboutUs} />
+          <Route path="/admin" component={Admin} />
+        </Switch>
+      </Body>
+    </Router>
   );
 }
 

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default function Navbar() {
   return (
@@ -24,59 +25,59 @@ export default function Navbar() {
         >
           <ul className="navbar-nav mb-0">
             <li className="nav-item">
-              <a className="nav-link active" aria-current="page" href="/">
+              <Link className="nav-link active" aria-current="page" to="/">
                 Home
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/">
+              <Link className="nav-link" to="/">
                 Products
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a
-                className="nav-link"
-                href="/"
-                tabIndex={-1}
-                aria-disabled="true"
-              >
+              <Link className="nav-link" to="/about">
                 About Us
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a
+              <Link
                 className="nav-link"
-                href="/"
+                to="/"
                 tabIndex={-1}
                 aria-disabled="true"
               >
                 Cart
-              </a>
+              </Link>
             </li>
             <li className="nav-item dropdown">
-              <a
+              <Link
                 className="nav-link dropdown-toggle"
-                href="/"
+                to="/profile"
                 id="navbarDropdown"
                 role="button"
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
                 Profile
-              </a>
+              </Link>
               <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li>
-                  <a className="dropdown-item" href="/">
+                  <Link className="dropdown-item" to="/admin">
+                    Admin
+                  </Link>
+                </li>
+                <li>
+                  <Link className="dropdown-item" to="/">
                     Preferences
-                  </a>
+                  </Link>
                 </li>
                 <li>
                   <hr className="dropdown-divider" />
                 </li>
                 <li>
-                  <a className="dropdown-item" href="/">
-                    Log-out
-                  </a>
+                  <Link className="dropdown-item" to="/">
+                    Log-in
+                  </Link>
                 </li>
               </ul>
             </li>
