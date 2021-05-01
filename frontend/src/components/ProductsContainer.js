@@ -1,38 +1,29 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React, { useEffect } from 'react';
 import { fetchProducts } from '../actions';
+import { useSelector, useDispatch } from 'react-redux';
 import ProductCard from './ProductCard';
 
-class ProductsContainer extends Component {
-  componentDidMount() {
-    this.props.onFetchProducts();
-  }
+function ProductsContainer() {
+  const dispatch = useDispatch();
+  const {
+    products: { items: products, loading },
+  } = useSelector(state => state);
 
-  render() {
-    console.log(this.props);
-    const { items: products, loading } = this.props;
-    return (
-      <div className="products-container row g-2">
-        {!products.length && loading ? (
-          <h1>loading...</h1>
-        ) : (
-          products.map(product => (
-            <ProductCard product={product} key={product._id} />
-          ))
-        )}
-      </div>
-    );
-  }
+  useEffect(() => {
+    dispatch(fetchProducts());
+  }, [dispatch]);
+
+  return (
+    <div className="products-container row g-2">
+      {!products.length && loading ? (
+        <h1>loading...</h1>
+      ) : (
+        products.map(product => (
+          <ProductCard product={product} key={product._id} />
+        ))
+      )}
+    </div>
+  );
 }
 
-const mapStateToProps = ({ products: { items, loading } }) => ({
-  items,
-  loading,
-});
-
-const mapDispachToProps = dispatch => {
-  return {
-    onFetchProducts: () => dispatch(fetchProducts()),
-  };
-};
-export default connect(mapStateToProps, mapDispachToProps)(ProductsContainer);
+export default ProductsContainer;
