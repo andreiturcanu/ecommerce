@@ -13,6 +13,8 @@ function ProductsContainer() {
     dispatch(fetchProducts());
   }, [dispatch]);
 
+  //console.log('products.length: ' + products.length + ', loading: ' + loading);
+  //console.log(products);
   return (
     <div className="products-container row g-2">
       {!products.length && loading ? (

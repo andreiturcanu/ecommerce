@@ -2,7 +2,7 @@ import {
   TRIGGER_LOADING,
   RECEIVE_PRODUCTS_SUCCESS,
   RECEIVE_PRODUCTS_FAILURE,
-} from "./consts";
+} from './consts';
 
 const triggerLoading = (state, payload) => {
   return {
@@ -25,7 +25,7 @@ const receiveProductsFailure = (state, { error, loading }) => {
 };
 
 export default function productsReducer(
-  state = { items: [], error: null, loading: false },
+  state = { items: [], error: null, loading: true },
   { type, payload }
 ) {
   switch (type) {
