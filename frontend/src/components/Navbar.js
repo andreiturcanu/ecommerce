@@ -1,13 +1,13 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 export default function Navbar() {
   return (
     <nav className="navbar navbar-expand-sm navbar-light">
       <div className="container">
-        <a className="navbar-brand" href="/">
+        <Link className="navbar-brand" aria-current="page" to="/">
           Logo
-        </a>
+        </Link>
         <button
           className="navbar-toggler"
           type="button"
